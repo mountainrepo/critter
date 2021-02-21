@@ -4,6 +4,7 @@ import com.udacity.jdnd.course3.critterdatalayer.entity.*;
 import com.udacity.jdnd.course3.critterdatalayer.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 
@@ -16,6 +17,7 @@ public class PetServiceImpl implements PetService {
     @Autowired
     private CustomerRepository customerRepository;
 
+    @Transactional
     public Pet savePet(Pet newPet) throws Exception {
         Pet savedPet = null;
 
@@ -52,6 +54,7 @@ public class PetServiceImpl implements PetService {
         customerRepository.save(customer.get());
     }
 
+    @Transactional
     public Pet getPet(Long petId) {
         Optional<Pet> foundPet = null;
 
@@ -70,6 +73,7 @@ public class PetServiceImpl implements PetService {
         }
     }
 
+    @Transactional
     public List<Pet> getPetsByOwner(Long customerId) {
         List<Pet> petList = null;
 
@@ -83,6 +87,7 @@ public class PetServiceImpl implements PetService {
         return petList;
     }
 
+    @Transactional
     public List<Pet> getPets() {
         List<Pet> petList = null;
 

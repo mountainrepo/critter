@@ -6,6 +6,7 @@ import com.udacity.jdnd.course3.critterdatalayer.entity.*;
 import com.udacity.jdnd.course3.critterdatalayer.repository.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
 import java.time.*;
@@ -30,6 +31,7 @@ public class ScheduleServiceImpl implements ScheduleService {
 
     private static final int MAX_VISITS_OFFERED = 10;
 
+    @Transactional
     public ScheduleData createSchedule(ScheduleData schedule) throws Exception {
         HashMap<String, List<Long>> skillEmployeeMap = new HashMap<String, List<Long>>();
         HashMap<String, Integer> skillPositionMap = new HashMap<String, Integer>();
@@ -168,6 +170,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return newSchedule;
     }
 
+    @Transactional
     public List<ScheduleData> getAllSchedules() {
         List<ScheduleData> scheduleDataList = null;
 
@@ -184,6 +187,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return scheduleDataList;
     }
 
+    @Transactional
     public List<ScheduleData> getScheduleForPet(Long petId) {
         List<ScheduleData> scheduleDataList = null;
 
@@ -200,6 +204,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return scheduleDataList;
     }
 
+    @Transactional
     public List<ScheduleData> getScheduleForEmployee(Long employeeId) {
         List<ScheduleData> scheduleDataList = null;
 
@@ -216,6 +221,7 @@ public class ScheduleServiceImpl implements ScheduleService {
         return scheduleDataList;
     }
 
+    @Transactional
     public List<ScheduleData> getScheduleForCustomer(Long customerId) {
         List<ScheduleData> scheduleDataList = null;
 
